@@ -1,0 +1,42 @@
+---
+title: Главная | AlexeyNewDeveloper
+---
+
+<div class="content">
+  <div class="content__welcome welcome">
+    <h1 class="welcome__header">{{site.data.welcomeSection.name}}</h1>
+    <div class="welcome__description">
+      <p class="welcome__sub-header">{{site.data.welcomeSection.subHeader}}</p>
+      {% include welcome-tech-stack.html %}
+    </div>
+  </div>
+  <div class="content__projects projects">
+    <ul class="projects__list">
+      {% for project in site.projects %}
+      <li class="projects__block projects__block_small">
+        <a name="{{project.title}}" class="projects__anchor"></a>
+        <div
+          class="projects__content projects__project-container projects__content-direction_{{project.position}}"
+        >
+          <img
+            alt="text"
+            src="{{site.url}}/assets/images{{project.image-link}}"
+            class="projects__image"
+          />
+          <div
+            class="projects__content-container projects__content_position_{{project.position}}"
+          >
+            <h2 class="projects__header topic-header">{{project.title}}</h2>
+            <div class="projects__description">
+              {{project.excerpt | truncatewords: 50}}
+            </div>
+            <a href="{{project.url}}" class="projects__more-detailed-link"
+              >Подробнее &rarr;</a
+            >
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
